@@ -72,7 +72,7 @@ const FloatingCollage = () => {
       </div>
 
       {/* Bottom Center Mug Peeking */}
-      <div className="absolute bottom-[-6%] left-[50%] -translate-x-1/2 w-32 md:hidden animate-float-1 z-0">
+      <div className="absolute bottom-[2%] left-[50%] -translate-x-1/2 w-32 md:hidden animate-float-1 z-0">
          <img src={mugGold} alt="Gold Heart Mug" className="w-full h-auto object-contain" />
       </div>
 
