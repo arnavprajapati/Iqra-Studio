@@ -27,7 +27,8 @@ const FloatingCard = ({
   mouseX,
   mouseY,
   px = 4,  
-  py = 3,   
+  py = 3,
+  isTransitioning = false,
 }) => {
   const controls = useAnimation();
 
@@ -43,7 +44,7 @@ const FloatingCard = ({
         transition: { duration: 0.95, delay, ease: EASE },
       });
 
-      if (alive) {
+      if (alive && !isTransitioning) {
         controls.start({
           y: floatY,
           transition: {
@@ -56,9 +57,22 @@ const FloatingCard = ({
       }
     };
 
-    run();
+    if (!isTransitioning) {
+      run();
+    } else {
+      controls.stop();
+      controls.start({
+        opacity: 0,
+        x: (Math.random() - 0.5) * 400,
+        y: (Math.random() - 0.5) * 400,
+        rotate: finalRotate + (Math.random() - 0.5) * 90,
+        scale: 0.5,
+        transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] }
+      });
+    }
+
     return () => { alive = false; };
-  }, []); 
+  }, [isTransitioning]); 
 
   const pX = useTransform(mouseX, [-0.5, 0.5], [-px, px]);
   const pY = useTransform(mouseY, [-0.5, 0.5], [-py, py]);
@@ -73,7 +87,7 @@ const FloatingCard = ({
 };
 
 
-const FloatingCollage = ({ mouseX, mouseY }) => {
+const FloatingCollage = ({ mouseX, mouseY, isTransitioning }) => {
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
 
@@ -87,6 +101,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.35}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={6}
         py={3}
       >
@@ -118,6 +133,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.5}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={7}
         py={4}
       >
@@ -138,6 +154,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.6}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={5}
         py={6}
       >
@@ -154,6 +171,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.72}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={3}
         py={5}
       >
@@ -170,6 +188,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.55}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={7}
         py={5}
       >
@@ -208,6 +227,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.45}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={2}
         py={2}
       >
@@ -224,6 +244,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.5}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={2}
         py={2}
       >
@@ -240,6 +261,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.6}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={2}
         py={2}
       >
@@ -256,6 +278,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
         delay={0.65}
         mouseX={mouseX}
         mouseY={mouseY}
+        isTransitioning={isTransitioning}
         px={2}
         py={2}
       >
@@ -273,6 +296,7 @@ const FloatingCollage = ({ mouseX, mouseY }) => {
           delay={0.5}
           mouseX={mouseX}
           mouseY={mouseY}
+          isTransitioning={isTransitioning}
           px={0}
           py={2}
         >
