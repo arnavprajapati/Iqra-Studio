@@ -7,11 +7,13 @@ const Layout = () => {
   const location = useLocation();
   
   return (
-    <div className="relative w-screen h-screen overflow-hidden bg-[#fcfbf9] flex flex-col items-center justify-center border-[12px] border-[#6b7280]/20 box-border rounded-[32px] sm:m-2 sm:h-[calc(100vh-16px)] sm:w-[calc(100vw-16px)]">
-      <Header />
-      <AnimatePresence mode="wait">
-        <Outlet key={location.pathname} />
-      </AnimatePresence>
+    <div className="w-full min-h-screen bg-white">
+      <div className="relative w-full h-full min-h-screen overflow-hidden bg-white flex flex-col rounded-[1.5rem] md:rounded-[2rem] border-[8px] md:border-[16px] border-[#e8e8e8]">
+        <Header />
+        <AnimatePresence mode="wait">
+          <Outlet key={location.pathname} />
+        </AnimatePresence>
+      </div>
     </div>
   );
 };

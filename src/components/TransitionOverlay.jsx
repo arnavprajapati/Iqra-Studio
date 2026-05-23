@@ -15,16 +15,11 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
 
   return (
     <motion.div
-      className="absolute inset-0 z-50 flex flex-col items-center justify-center overflow-hidden pointer-events-none"
+      className="absolute top-0 left-0 w-full h-screen z-50 flex flex-col items-center justify-center overflow-hidden pointer-events-none"
       variants={overlayVariants}
       initial="hidden"
       animate="visible"
       exit="exit"
-      onAnimationComplete={(definition) => {
-        if (definition === "shiftUp" && onComplete) {
-          onComplete();
-        }
-      }}
     >
       <motion.div 
         className="flex flex-col items-center"
@@ -32,6 +27,11 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
         initial="hidden"
         animate={["visible", "shiftUp"]} // Run visible, then shiftUp
         style={PERSPECTIVE}
+        onAnimationComplete={(definition) => {
+          if (definition === "shiftUp" && onComplete) {
+            onComplete();
+          }
+        }}
       >
         <div className="flex flex-row flex-nowrap whitespace-nowrap justify-center space-x-6 md:space-x-10 leading-[0.9]">
           {words.map((word, wordIndex) => (

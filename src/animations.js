@@ -145,10 +145,10 @@ export const shopContainerVariants = {
     y: 0,
     transition: { 
       duration: 1.2, 
-      delay: 3.4, 
+      delay: 0.1, 
       ease: slowEasing,
       staggerChildren: 0.1,
-      delayChildren: 3.6
+      delayChildren: 0.3
     }
   }
 };
