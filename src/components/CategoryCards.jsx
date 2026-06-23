@@ -1,53 +1,66 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const categories = [
   {
     image: '/assets/categories/for_her.png',
     title: 'For Her',
+    categoryId: 'for-her',
     message: "Hi! I'm interested in gifts For Her"
   },
   {
     image: '/assets/categories/for_him.png',
     title: 'For Him',
+    categoryId: 'for-him',
     message: "Hi! I'm interested in gifts For Him"
   },
   {
     image: '/assets/categories/bestie.png',
     title: 'For Best Friends',
+    categoryId: 'for-bestfriends',
     message: "Hi! I'm interested in gifts For Best Friends",
     isContain: true
   },
   {
     image: '/assets/categories/birthday.png',
     title: 'For Birthdays',
+    categoryId: 'for-birthdays',
     message: "Hi! I'm interested in gifts For Birthdays"
   },
   {
     image: '/assets/categories/anniversary.png',
     title: 'For Anniversaries',
+    categoryId: 'for-anniversaries',
     message: "Hi! I'm interested in gifts For Anniversaries"
   },
   {
     image: '/assets/categories/farewell.png',
     title: 'For Farewells',
+    categoryId: 'for-farewells',
     message: "Hi! I'm interested in gifts For Farewells"
   },
   {
     image: '/assets/categories/custom.png',
     title: 'For Memories',
+    categoryId: 'for-memories',
     message: "Hi! I'm interested in gifts For Memories"
   },
   {
     image: '/assets/categories/hampers.png',
     title: 'For Little Moments',
+    categoryId: 'for-little-moments',
     message: "Hi! I'm interested in gifts For Little Moments"
   }
 ];
 
 const CategoryCards = () => {
-  const handleWhatsApp = (message) => {
-    
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (cat) => {
+    if (cat.categoryId) {
+      navigate(`/category/${cat.categoryId}`);
+    }
   };
 
   return (
@@ -75,7 +88,7 @@ const CategoryCards = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="flex flex-col items-center cursor-pointer group"
-              onClick={() => handleWhatsApp(cat.message)}
+              onClick={() => handleCategoryClick(cat)}
             >
               <div className={`w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-[3px] border-transparent group-hover:border-[#facc15]/30 group-hover:scale-105 ${cat.isContain ? 'bg-white p-1' : ''}`}>
                 <img 

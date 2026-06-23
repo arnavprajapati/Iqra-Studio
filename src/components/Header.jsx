@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const navVariants = {
   hidden: { opacity: 0, y: -20 },
@@ -21,6 +22,7 @@ const Header = () => {
   const showFullNav = location.pathname !== '/';
   const [scrollY, setScrollY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = (e) => setScrollY(e.detail);
@@ -89,7 +91,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="flex-1 flex justify-end">
+      <div className="flex-1 flex justify-end pointer-events-auto">
         {showFullNav && (
           <div className="flex items-center gap-4">
             <div className="relative hidden md:flex items-center">
@@ -112,9 +114,16 @@ const Header = () => {
                 className={`px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition-colors ${scrollStage > 0 ? 'text-black hover:bg-black/10' : 'text-gray-800 hover:text-black'}`}
               >
                 Bag
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                </svg>
+                <span className="relative">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                  </svg>
+                  {totalItems > 0 && (
+                    <span className="absolute -top-2 -right-2 w-4 h-4 bg-[#1a1a2e] text-white text-[9px] font-bold rounded-full flex items-center justify-center leading-none">
+                      {totalItems > 9 ? '9+' : totalItems}
+                    </span>
+                  )}
+                </span>
               </Link>
             </motion.div>
           </div>
