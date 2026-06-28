@@ -37,7 +37,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`absolute top-0 left-0 w-full z-50 px-6 md:px-12 transition-all duration-500 ease-in-out flex items-center justify-between pointer-events-none ${scrollStage > 0 ? 'py-4' : 'py-8'
+      className={`absolute top-0 left-0 w-full z-50 px-6 md:px-12 transition-all duration-500 ease-in-out flex items-center justify-between pointer-events-none ${scrollStage > 0 ? 'pt-8 pb-4 md:py-4' : 'pt-14 pb-4 md:py-8'
         }`}
       variants={navVariants}
       initial="hidden"
@@ -65,7 +65,7 @@ const Header = () => {
                   animate={{ width: 'auto', opacity: 1 }}
                   exit={{ width: 0, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="flex items-center whitespace-nowrap origin-left"
+                  className="hidden md:flex items-center whitespace-nowrap origin-left"
                 >
                   {['Gifts', 'Custom', 'Moments'].map((item) => (
                     <Link
@@ -85,7 +85,7 @@ const Header = () => {
 
       <div className="flex-1 flex justify-center pointer-events-auto">
         <div className={`transition-all duration-500 transform ${scrollStage > 0 ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 pointer-events-auto'}`}>
-          <Link to="/" className="font-custom text-3xl md:text-4xl font-bold text-gray-900 tracking-tight lowercase">
+          <Link to="/" className="font-style-script text-4xl sm:text-5xl md:text-6xl text-gray-900 tracking-tight whitespace-nowrap">
             Lunar pearl
           </Link>
         </div>

@@ -14,15 +14,15 @@ const HeroContent = ({ onExploreClick }) => {
     >
 
       <motion.h1
-        className="font-custom text-5xl md:text-6xl lg:text-7xl font-semibold text-gray-900 mb-6 leading-[1.1] md:leading-[1.15] tracking-tight"
+        className="font-playfair italic text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 mb-6 leading-[1.1] md:leading-[1.15] tracking-tight"
         style={PERSPECTIVE}
         variants={headingVariants}
       >
-        Made for<br className="block md:hidden" /> Your<br className="hidden md:block" /> People
+        Made for Your People
       </motion.h1>
 
       <motion.p
-        className="hidden md:block text-gray-600 text-sm md:text-base lg:text-lg mb-8 md:mb-10 max-w-xs md:max-w-md lg:max-w-[480px] font-medium leading-relaxed"
+        className="hidden md:block text-gray-600 text-base md:text-lg lg:text-xl mb-8 md:mb-10 max-w-xs md:max-w-md lg:max-w-[540px] font-medium leading-[1.8]"
         style={PERSPECTIVE}
         variants={paragraphVariants}
       >

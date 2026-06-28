@@ -1,4 +1,4 @@
-const WHATSAPP = '6306049213';
+const WHATSAPP = '8354992412';
 
 export const categoryProducts = {
 
@@ -10,19 +10,27 @@ export const categoryProducts = {
       {
         id: 1,
         name: 'Handcrafted Bangle Set',
-        price: '₹499',
+        price: '₹99',
         image: 'https://res.cloudinary.com/dzz1wmydl/image/upload/v1782204260/bangles_sddgne.png',
         tag: 'Bestseller',
         description: 'Beautifully crafted bangles — the perfect gift to make her feel truly special',
       },
       {
         id: 2,
-        name: 'Handcrafted Bangle Set',
-        price: '₹499',
-        image: 'https://res.cloudinary.com/dzz1wmydl/image/upload/v1782204260/bangles_sddgne.png',
-        tag: 'Bestseller',
-        description: 'Beautifully crafted bangles — the perfect gift to make her feel truly special',
+        name: 'Traditional Oxidized Stud Earrings',
+        price: '₹99',
+        image: 'https://res.cloudinary.com/dzz1wmydl/image/upload/v1782645723/WhatsApp_Image_2026-06-28_at_4.42.41_PM_do4c4c.jpg',
+        tag: 'New Arrival',
+        description: 'Intricately crafted oxidized studs for a timeless ethnic look.'
       },
+      {
+        id: 3,
+        name: 'Oxidized Silver Tassel Earrings',
+        price: '₹99',
+        image: 'https://res.cloudinary.com/dzz1wmydl/image/upload/v1782646732/WhatsApp_Image_2026-06-28_at_4.30.25_PM_ii7nlc.jpg',
+        tag: 'Trending',
+        description: 'Elegant oxidized earrings with tassel drops and traditional charm.'
+      }
     ],
   },
 

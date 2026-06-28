@@ -64,7 +64,7 @@ const ProductCard = ({ product, onAddToCart, index }) => {
           {product.name}
         </h3>
         {product.description && (
-          <p className="mt-2 text-[13px] md:text-[14px] text-gray-600 leading-relaxed line-clamp-2 font-medium">
+          <p className="mt-2 text-[13px] md:text-[14px] text-gray-600 leading-relaxed font-medium">
             {product.description}
           </p>
         )}
@@ -75,24 +75,9 @@ const ProductCard = ({ product, onAddToCart, index }) => {
           </span>
           <button
             onClick={handleAdd}
-            style={{
-              background: added ? '#facc15' : '#1a1a2e',
-              color: added ? '#1a1a1a' : '#ffffff',
-              border: 'none',
-              outline: 'none',
-              padding: '10px 18px',
-              borderRadius: '999px',
-              fontSize: '11px',
-              fontWeight: '700',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              cursor: 'pointer',
-              transition: 'background 0.25s, color 0.25s',
-              flexShrink: 0,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '6px',
-            }}
+            className={`flex-shrink-0 flex items-center justify-center gap-1.5 rounded-full outline-none border-none font-bold uppercase tracking-[0.05em] md:tracking-widest transition-colors duration-250 px-3 py-2 md:px-4 md:py-2.5 text-[9px] md:text-[11px] ${
+              added ? 'bg-[#facc15] text-[#1a1a1a]' : 'bg-[#1a1a2e] text-white'
+            }`}
           >
             <AnimatePresence mode="wait">
               {added ? (
@@ -103,7 +88,7 @@ const ProductCard = ({ product, onAddToCart, index }) => {
                   exit={{ opacity: 0 }}
                   className="flex items-center gap-1"
                 >
-                  ✓ Added
+                  ✓ <span className="hidden sm:inline">Added</span>
                 </motion.span>
               ) : (
                 <motion.span
@@ -113,7 +98,7 @@ const ProductCard = ({ product, onAddToCart, index }) => {
                   exit={{ opacity: 0 }}
                   className="flex items-center gap-1"
                 >
-                  + Add to Cart
+                  + <span className="hidden sm:inline">Add to Cart</span><span className="sm:hidden">Add</span>
                 </motion.span>
               )}
             </AnimatePresence>
@@ -200,7 +185,7 @@ const CategoryPage = () => {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: easing }}
-        className="w-full flex flex-col items-center text-center pt-24 md:pt-28 pb-8 px-6"
+        className="w-full flex flex-col items-center text-center pb-4 md:pb-6 px-6 sticky top-[-30px] md:top-[-92px] pt-[146px] md:pt-[112px] z-30 bg-[#fbfaf8] shadow-sm"
       >
         <motion.h1
           initial={{ opacity: 0, scale: 1.08, filter: 'blur(6px)' }}
@@ -228,7 +213,7 @@ const CategoryPage = () => {
         />
       </motion.div>
 
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pb-28">
+      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pb-28 pt-8">
         {data.products.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
             {data.products.map((product, i) => (

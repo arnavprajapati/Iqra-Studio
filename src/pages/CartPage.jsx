@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { easing } from '../animations';
 
-const WHATSAPP = '916306049213';
+const WHATSAPP = '918354992412';
 
 const WaIcon = () => (
   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">

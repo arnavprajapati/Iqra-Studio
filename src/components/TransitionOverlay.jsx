@@ -33,7 +33,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
           }
         }}
       >
-        <div className="flex flex-row flex-nowrap whitespace-nowrap justify-center space-x-6 md:space-x-10 leading-[0.9]">
+        <div className="flex flex-row flex-nowrap whitespace-nowrap justify-center space-x-4 md:space-x-6 leading-[0.9]">
           {words.map((word, wordIndex) => (
             <div key={wordIndex} className="inline-block overflow-hidden pb-4 md:pb-8">
               {word.split("").map((letter, letterIndex) => {
@@ -42,7 +42,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                     <div key={letterIndex} className="relative inline-block">
                       <motion.span
                         className="inline-block font-custom font-bold text-gray-900"
-                        style={{ fontSize: 'clamp(4rem, 15.5vw, 24rem)', clipPath: 'inset(38% 0 0 0)' }}
+                        style={{ fontSize: 'clamp(3rem, 12.5vw, 18rem)', clipPath: 'inset(38% 0 0 0)' }}
                         variants={letterVariants}
                       >
                         {letter}
@@ -51,7 +51,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                       <motion.span
                         className="absolute inset-0 inline-block font-custom font-bold text-gray-900"
                         style={{ 
-                          fontSize: 'clamp(4rem, 15.5vw, 24rem)', 
+                          fontSize: 'clamp(3rem, 12.5vw, 18rem)', 
                           clipPath: 'inset(0 0 72% 0)',
                           transformOrigin: '50% 15%'
                         }}
@@ -67,7 +67,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                   <motion.span
                     key={letterIndex}
                     className="inline-block font-custom font-bold text-gray-900"
-                    style={{ fontSize: 'clamp(4rem, 15.5vw, 24rem)' }}
+                    style={{ fontSize: 'clamp(3rem, 12.5vw, 18rem)' }}
                     variants={letterVariants}
                   >
                     {letter}
