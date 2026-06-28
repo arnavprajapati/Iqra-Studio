@@ -54,19 +54,47 @@ const categories = [
   }
 ];
 
+const CategoryCardItem = ({ cat, idx, onClick }) => {
+  const [imgLoaded, setImgLoaded] = React.useState(false);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: idx * 0.1 }}
+      className="flex flex-col items-center cursor-pointer group"
+      onClick={() => onClick(cat)}
+    >
+      <div className={`relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-[3px] border-transparent group-hover:border-[#facc15]/30 group-hover:scale-105 ${cat.isContain ? 'bg-white p-1' : ''}`}>
+        {!imgLoaded && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse z-10 rounded-full" />
+        )}
+        <img 
+          src={cat.image} 
+          alt={cat.title} 
+          className={`w-full h-full rounded-full transition-all duration-500 group-hover:scale-110 relative z-0 ${cat.isContain ? 'object-contain' : 'object-cover'} ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImgLoaded(true)}
+        />
+      </div>
+      <h3 className="mt-5 text-[15px] md:text-[17px] font-medium text-gray-800 group-hover:text-black transition-colors">
+        {cat.title}
+      </h3>
+    </motion.div>
+  );
+};
+
 const CategoryCards = () => {
   const navigate = useNavigate();
 
-  const handleCategoryClick = (cat) => {
-    if (cat.categoryId) {
-      navigate(`/category/${cat.categoryId}`);
-    }
+  const handleCategoryClick = (category) => {
+    navigate(`/category/${category.categoryId}`);
   };
 
   return (
-    <section className="w-full bg-white py-20 px-6 shrink-0 relative z-10">
-      <div className="max-w-6xl mx-auto flex flex-col items-center">
-        
+    <section className="w-full py-16 md:py-24 bg-[#fbfaf8] relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -81,26 +109,7 @@ const CategoryCards = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 md:gap-12 w-full place-items-center">
           {categories.map((cat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="flex flex-col items-center cursor-pointer group"
-              onClick={() => handleCategoryClick(cat)}
-            >
-              <div className={`w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-[3px] border-transparent group-hover:border-[#facc15]/30 group-hover:scale-105 ${cat.isContain ? 'bg-white p-1' : ''}`}>
-                <img 
-                  src={cat.image} 
-                  alt={cat.title} 
-                  className={`w-full h-full rounded-full transition-transform duration-500 group-hover:scale-110 ${cat.isContain ? 'object-contain' : 'object-cover'}`}
-                />
-              </div>
-              <h3 className="mt-5 text-[15px] md:text-[17px] font-medium text-gray-800 group-hover:text-black transition-colors">
-                {cat.title}
-              </h3>
-            </motion.div>
+            <CategoryCardItem key={idx} cat={cat} idx={idx} onClick={handleCategoryClick} />
           ))}
         </div>
 

@@ -21,6 +21,7 @@ const TAG_STYLES = {
 
 const ProductCard = ({ product, onAddToCart, index }) => {
   const [imgErr, setImgErr] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
   const [added, setAdded] = useState(false);
   const tag = product.tag;
   const tagStyle = TAG_STYLES[tag] || 'bg-gray-100 text-gray-700';
@@ -41,19 +42,26 @@ const ProductCard = ({ product, onAddToCart, index }) => {
     >
       <div className="relative overflow-hidden bg-[#f5f3f0]" style={{ aspectRatio: '4 / 3' }}>
         {tag && (
-          <span className={`absolute top-3 left-3 z-10 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full ${tagStyle}`}>
+          <span className={`absolute top-3 left-3 z-20 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full ${tagStyle}`}>
             {tag}
           </span>
         )}
+        
+        {/* Shimmer Placeholder */}
+        {!imgLoaded && !imgErr && (
+          <div className="absolute inset-0 bg-gray-200 animate-pulse z-10" />
+        )}
+
         {imgErr ? (
-          <div className="w-full h-full flex items-center justify-center">
+          <div className="w-full h-full flex items-center justify-center relative z-0">
             <span className="text-5xl opacity-30">🎁</span>
           </div>
         ) : (
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.07]"
+            className={`w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-[1.07] relative z-0 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setImgLoaded(true)}
             onError={() => setImgErr(true)}
           />
         )}
