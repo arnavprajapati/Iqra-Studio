@@ -2,15 +2,16 @@
 
 body {
   margin: 0;
-  background-color: #fbfaf8; /* Soft beige/off-white as per reference */
-  color: #1a1a1a;
+  background-color: #fcfaf8; 
+  color: #2b2724;
   overflow: hidden;
   font-family: 'Montserrat', sans-serif;
 }
 
 a, button, [role="button"], input[type="submit"], label, select,
-.cursor-pointer, [onClick], summary {
+.cursor-pointer, .pointer-events-auto {
   cursor: pointer !important;
+  pointer-events: auto !important;
 }
 
 /* Typography specifics */

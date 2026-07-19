@@ -145,7 +145,7 @@ const FloatingCollage = ({ mouseX, mouseY, isTransitioning }) => {
       </FloatingCard>
 
       <FloatingCard
-        wrapperClass="absolute bottom-[4%] lg:bottom-[8%] left-[4%] lg:left-[6%] w-52 lg:w-56 hidden md:block z-0"
+        wrapperClass="absolute bottom-[20%] lg:bottom-[24%] left-[4%] lg:left-[6%] w-52 lg:w-56 hidden md:block z-0"
         cardClass="w-full"
         entrance={{ opacity: 0, x: -38, y: 42, rotate: -16 }}
         finalRotate={-8}
@@ -162,7 +162,7 @@ const FloatingCollage = ({ mouseX, mouseY, isTransitioning }) => {
       </FloatingCard>
 
       <FloatingCard
-        wrapperClass="absolute bottom-[5%] lg:bottom-[8%] left-[24%] lg:left-[26%] w-32 lg:w-36 hidden md:block z-20"
+        wrapperClass="absolute bottom-[18%] lg:bottom-[22%] left-[12%] lg:left-[14%] w-32 lg:w-36 hidden md:block z-20"
         cardClass="w-full mix-blend-multiply opacity-95"
         entrance={{ opacity: 0, y: 44, rotate: 9 }}
         finalRotate={0}
@@ -179,7 +179,7 @@ const FloatingCollage = ({ mouseX, mouseY, isTransitioning }) => {
       </FloatingCard>
 
       <FloatingCard
-        wrapperClass="absolute bottom-[8%] lg:bottom-[12%] right-[10%] lg:right-[15%] w-48 lg:w-56 hidden md:block z-10"
+        wrapperClass="absolute bottom-[25%] lg:bottom-[28%] right-[10%] lg:right-[15%] w-48 lg:w-56 hidden md:block z-10"
         cardClass="w-full"
         entrance={{ opacity: 0, x: 38, y: 42, rotate: 9 }}
         finalRotate={3}
