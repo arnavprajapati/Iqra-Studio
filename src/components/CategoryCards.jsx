@@ -66,9 +66,9 @@ const CategoryCardItem = ({ cat, idx, onClick }) => {
       className="flex flex-col items-center cursor-pointer group"
       onClick={() => onClick(cat)}
     >
-      <div className={`relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-[3px] border-transparent group-hover:border-[#facc15]/30 group-hover:scale-105 ${cat.isContain ? 'bg-white p-1' : ''}`}>
+      <div className={`relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden shadow-sm group-hover:shadow-xl transition-all duration-300 border-[3px] border-transparent group-hover:border-[#be9456]/40 group-hover:scale-105 ${cat.isContain ? 'bg-white p-1' : ''}`}>
         {!imgLoaded && (
-          <div className="absolute inset-0 bg-gray-200 animate-pulse z-10 rounded-full" />
+          <div className="absolute inset-0 bg-[#fbf9f6] animate-pulse z-10 rounded-full" />
         )}
         <img 
           src={cat.image} 
@@ -77,7 +77,7 @@ const CategoryCardItem = ({ cat, idx, onClick }) => {
           onLoad={() => setImgLoaded(true)}
         />
       </div>
-      <h3 className="mt-5 text-[15px] md:text-[17px] font-medium text-gray-800 group-hover:text-black transition-colors">
+      <h3 className="mt-5 font-playfair text-[16px] md:text-[18px] font-medium text-[#3a3532] group-hover:text-[#b58953] transition-colors">
         {cat.title}
       </h3>
     </motion.div>
@@ -92,7 +92,7 @@ const CategoryCards = () => {
   };
 
   return (
-    <section className="w-full py-16 md:py-24 bg-[#fbfaf8] relative overflow-hidden">
+    <section className="w-full py-16 md:py-24 bg-transparent relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
         <motion.div 
@@ -100,9 +100,21 @@ const CategoryCards = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-16 flex flex-col items-center"
         >
-          <h2 className="font-custom text-4xl md:text-5xl font-semibold mb-3 tracking-tight text-[#1a1a2e]">
+          <svg className="w-3.5 h-3.5 text-[#c49859] mb-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+
+          <div className="flex items-center gap-3 mb-5">
+            <div className="h-[1px] w-6 md:w-10 bg-[#c49859] opacity-40"></div>
+            <p className="text-[#b58953] uppercase tracking-[0.2em] text-[10px] md:text-[11px] font-bold">
+              Browse Categories
+            </p>
+            <div className="h-[1px] w-6 md:w-10 bg-[#c49859] opacity-40"></div>
+          </div>
+
+          <h2 className="font-playfair text-4xl md:text-5xl font-medium mb-3 tracking-tight text-[#2b2724]">
             Shop by Occasion
           </h2>
         </motion.div>

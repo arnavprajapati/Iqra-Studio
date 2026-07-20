@@ -19,8 +19,8 @@ const CartItem = ({ item, onRemove, onQty }) => (
     animate={{ opacity: 1, x: 0 }}
     exit={{ opacity: 0, x: 40, transition: { duration: 0.25 } }}
     transition={{ duration: 0.35, ease: easing }}
-    className="flex items-center gap-4 bg-white rounded-2xl p-4"
-    style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}
+    className="flex items-center gap-4 bg-white/80 backdrop-blur-[2px] rounded-2xl p-4"
+    style={{ boxShadow: '0 8px 30px rgba(181, 137, 83, 0.05)' }}
   >
     {/* Image */}
     <div className="w-20 h-20 rounded-xl overflow-hidden bg-[#f5f3f0] shrink-0">
@@ -33,13 +33,13 @@ const CartItem = ({ item, onRemove, onQty }) => (
 
     {/* Info */}
     <div className="flex-1 min-w-0">
-      <h3 className="font-custom font-semibold text-[#1a1a2e] text-[17px] leading-snug truncate">
+      <h3 className="font-playfair font-medium text-[#2b2724] text-[17px] leading-snug truncate">
         {item.name}
       </h3>
       {item.description && (
-        <p className="text-[14px] font-semibold text-gray-400 mt-0.5 truncate">{item.description}</p>
+        <p className="text-[14px] font-medium text-[#7a7267] mt-0.5 truncate">{item.description}</p>
       )}
-      <p className="font-custom font-bold text-[#1a1a2e] text-[16px] mt-1">{item.price}</p>
+      <p className="font-playfair font-semibold text-[#2b2724] text-[16px] mt-1">{item.price}</p>
     </div>
 
     {/* Qty + Remove */}
@@ -51,12 +51,12 @@ const CartItem = ({ item, onRemove, onQty }) => (
       <div className="flex items-center gap-1 bg-[#f5f3f0] rounded-full px-2 py-1">
         <button
           onClick={() => onQty(item.id, item.categoryId, item.qty - 1)}
-          className="w-7 h-7 flex items-center justify-center text-[#1a1a2e] font-bold text-base hover:bg-[#facc15] rounded-full transition-colors"
+          className="w-7 h-7 flex items-center justify-center text-[#2b2724] font-bold text-base hover:bg-[#be9456] hover:text-white rounded-full transition-colors"
         >−</button>
-        <span className="text-[#1a1a2e] font-semibold text-sm w-5 text-center">{item.qty}</span>
+        <span className="text-[#2b2724] font-semibold text-sm w-5 text-center">{item.qty}</span>
         <button
           onClick={() => onQty(item.id, item.categoryId, item.qty + 1)}
-          className="w-7 h-7 flex items-center justify-center text-[#1a1a2e] font-bold text-base hover:bg-[#facc15] rounded-full transition-colors"
+          className="w-7 h-7 flex items-center justify-center text-[#2b2724] font-bold text-base hover:bg-[#be9456] hover:text-white rounded-full transition-colors"
         >+</button>
       </div>
     </div>
@@ -71,13 +71,13 @@ const EmptyCart = ({ onShop }) => (
     className="flex flex-col items-center justify-center py-24 text-center"
   >
     <div className="w-24 h-24 rounded-full bg-[#f5f3f0] flex items-center justify-center mb-5 text-5xl">🛍️</div>
-    <h3 className="font-custom text-2xl font-semibold text-[#1a1a2e] tracking-tight mb-2">Cart is Empty</h3>
-    <p className="text-gray-400 text-xl max-w-xs leading-relaxed mb-8">
+    <h3 className="font-playfair text-2xl font-medium text-[#2b2724] tracking-tight mb-2">Cart is Empty</h3>
+    <p className="text-[#7a7267] text-[16px] max-w-xs leading-relaxed mb-8">
       No items added yet — let's go find the perfect gift!
     </p>
     <motion.button
       onClick={onShop}
-      className="bg-[#1a1a2e] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide shadow-lg"
+      className="bg-[#be9456] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide shadow-lg hover:bg-[#a57f49]"
       whileTap={{ scale: 0.96 }}
     >
       Browse Gifts
@@ -113,7 +113,7 @@ const CartPage = () => {
     <motion.div
       ref={scrollRef}
       onScroll={handleScroll}
-      className="absolute inset-0 w-full h-full overflow-y-auto overflow-x-hidden bg-[#fbfaf8] no-scrollbar"
+      className="absolute inset-0 w-full h-full overflow-y-auto overflow-x-hidden bg-transparent no-scrollbar"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, scale: 0.97, filter: 'blur(4px)', transition: { duration: 0.3 } }}
@@ -125,13 +125,13 @@ const CartPage = () => {
           initial={{ opacity: 0, scale: 1.06, filter: 'blur(5px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 0.6, delay: 0.1, ease: easing }}
-          className="font-custom text-[2.4rem] md:text-[3rem] font-semibold text-[#1a1a2e] tracking-tight leading-tight mb-1"
+          className="font-playfair text-[2.4rem] md:text-[3rem] font-medium text-[#2b2724] tracking-tight leading-tight mb-1"
         >
           Your Cart
         </motion.h1>
 
         {totalItems > 0 && (
-          <p className="text-gray-400 text-sm font-medium mt-1">
+          <p className="text-[#7a7267] text-sm font-medium mt-1">
             {totalItems} {totalItems === 1 ? 'item' : 'items'}
           </p>
         )}
@@ -140,7 +140,7 @@ const CartPage = () => {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.5, delay: 0.25, ease: easing }}
-          className="mt-4 h-[3px] w-14 rounded-full bg-[#facc15] origin-left"
+          className="mt-4 h-[3px] w-14 rounded-full bg-[#be9456] origin-left"
         />
       </div>
 
@@ -171,12 +171,12 @@ const CartPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.45, ease: easing }}
-              className="w-full lg:w-[400px] shrink-0 bg-white rounded-3xl p-6"
-              style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.06)' }}
+              className="w-full lg:w-[400px] shrink-0 bg-white/85 backdrop-blur-[2px] rounded-3xl p-6"
+              style={{ boxShadow: '0 8px 30px rgba(181, 137, 83, 0.05)' }}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="text-gray-600 text-sm font-semibold">Subtotal ({totalItems} {totalItems === 1 ? 'item' : 'items'})</span>
-                <span className="font-custom font-bold text-[#1a1a2e] text-xl text-right">
+                <span className="font-playfair font-semibold text-[#2b2724] text-xl text-right">
                   ₹{totalPrice.toLocaleString('en-IN')}
                 </span>
               </div>
@@ -188,7 +188,7 @@ const CartPage = () => {
 
               <button
                 onClick={clearCart}
-                className="text-[14px] font-semibold text-gray-400 hover:text-red-400 transition-colors mb-4 block w-full text-right underline underline-offset-2"
+                className="text-[14px] font-semibold text-[#7a7267] hover:text-red-500 transition-colors mb-4 block w-full text-right underline underline-offset-2"
               >
                 Clear Cart
               </button>

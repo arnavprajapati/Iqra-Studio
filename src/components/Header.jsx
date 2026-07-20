@@ -22,6 +22,7 @@ const Header = () => {
   const showFullNav = location.pathname !== '/';
   const [scrollY, setScrollY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isSearchHovered, setIsSearchHovered] = useState(false);
   const { totalItems } = useCart();
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const Header = () => {
   const scrollStage = scrollY === 0 ? 0 : scrollY < 80 ? 1 : 2;
 
   const showAllLinks = scrollStage < 2 || isHovered;
+  const showSearchFull = scrollStage < 2 || isSearchHovered;
   const isYellow = scrollStage > 0 || isHovered;
 
   return (
@@ -49,11 +51,11 @@ const Header = () => {
             layout
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`flex items-center overflow-hidden rounded-full p-1.5 transition-colors duration-300 ${isYellow ? 'bg-[#facc15] shadow-sm' : 'bg-transparent'}`}
+            className={`flex items-center overflow-hidden rounded-full p-1.5 transition-colors duration-300 ${isYellow ? 'bg-[#be9456] shadow-sm border border-transparent' : 'bg-white/60 backdrop-blur-md shadow-sm border border-white/40'}`}
           >
             <Link
               to="/shop"
-              className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${isYellow ? 'text-black hover:bg-black/10' : 'text-gray-800 hover:text-black'}`}
+              className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-colors ${isYellow ? 'text-white hover:bg-black/10' : 'text-gray-900 hover:text-black'}`}
             >
               Shop
             </Link>
@@ -71,7 +73,7 @@ const Header = () => {
                     <Link
                       key={item}
                       to={`/${item.toLowerCase()}`}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${isYellow ? 'text-black hover:bg-black/10' : 'text-gray-800 hover:text-black'}`}
+                      className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${isYellow ? 'text-white hover:bg-white/15' : 'text-gray-900 hover:text-black'}`}
                     >
                       {item}
                     </Link>
@@ -85,7 +87,7 @@ const Header = () => {
 
       <div className="flex-1 flex justify-center pointer-events-auto">
         <div className={`transition-all duration-500 transform ${scrollStage > 0 ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 pointer-events-auto'}`}>
-          <Link to="/" className="font-style-script text-4xl sm:text-5xl md:text-6xl text-gray-900 tracking-tight whitespace-nowrap">
+          <Link to="/home" className="font-style-script text-4xl sm:text-5xl md:text-6xl text-gray-900 tracking-tight whitespace-nowrap">
             Lunar pearl
           </Link>
         </div>
@@ -94,24 +96,33 @@ const Header = () => {
       <div className="flex-1 flex justify-end pointer-events-auto">
         {showFullNav && (
           <div className="flex items-center gap-4">
-            <div className="relative hidden md:flex items-center">
-              <svg className="w-4 h-4 text-gray-400 absolute left-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <motion.div
+              layout
+              onMouseEnter={() => setIsSearchHovered(true)}
+              onMouseLeave={() => setIsSearchHovered(false)}
+              className={`relative hidden md:flex items-center overflow-hidden rounded-full transition-colors duration-300 ${scrollStage > 0 ? 'bg-white shadow-sm border border-gray-200' : 'bg-white/60 backdrop-blur-md shadow-sm border border-white/40'}`}
+            >
+              <svg className={`w-4 h-4 absolute left-[11px] z-10 pointer-events-none transition-colors duration-300 ${scrollStage > 0 ? 'text-gray-400' : 'text-gray-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
-              <input
+              <motion.input
                 type="text"
                 placeholder="Search gifts..."
-                className={`pl-9 pr-4 py-2 border rounded-full text-sm outline-none w-48 focus:border-gray-400 transition-colors ${scrollStage > 0 ? 'bg-white border-gray-200' : 'bg-transparent border-gray-300'}`}
+                layout
+                initial={false}
+                animate={{ width: showSearchFull ? '12rem' : '2.25rem' }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className={`h-9 pl-8 py-2 bg-transparent text-sm outline-none transition-all duration-300 ${scrollStage > 0 ? 'text-gray-800 placeholder-gray-400' : 'text-gray-900 placeholder-gray-500'} ${!showSearchFull ? 'pr-0 cursor-pointer placeholder-transparent' : 'pr-4 focus:cursor-text'}`}
               />
-            </div>
+            </motion.div>
 
             <motion.div
               layout
-              className={`flex items-center overflow-hidden rounded-full p-1.5 transition-colors duration-300 ${scrollStage > 0 ? 'bg-[#facc15] shadow-sm' : 'bg-transparent'}`}
+              className={`flex items-center overflow-hidden rounded-full p-1.5 transition-colors duration-300 ${scrollStage > 0 ? 'bg-[#be9456] shadow-sm border border-transparent' : 'bg-white/60 backdrop-blur-md shadow-sm border border-white/40'}`}
             >
               <Link
                 to="/cart"
-                className={`px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition-colors ${scrollStage > 0 ? 'text-black hover:bg-black/10' : 'text-gray-800 hover:text-black'}`}
+                className={`px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-2 whitespace-nowrap transition-colors ${scrollStage > 0 ? 'text-white hover:bg-black/10' : 'text-gray-800 hover:text-black'}`}
               >
                 Bag
                 <span className="relative">

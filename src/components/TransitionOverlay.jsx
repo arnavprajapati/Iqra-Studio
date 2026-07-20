@@ -41,17 +41,17 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                   return (
                     <div key={letterIndex} className="relative inline-block">
                       <motion.span
-                        className="inline-block font-custom font-bold text-gray-900"
-                        style={{ fontSize: 'clamp(3rem, 12.5vw, 18rem)', clipPath: 'inset(38% 0 0 0)' }}
+                        className="inline-block font-playfair font-medium text-[#2b2724]"
+                        style={{ fontSize: 'clamp(3.5rem, 15vw, 20rem)', clipPath: 'inset(38% 0 0 0)' }}
                         variants={letterVariants}
                       >
                         {letter}
                       </motion.span>
                       
                       <motion.span
-                        className="absolute inset-0 inline-block font-custom font-bold text-gray-900"
+                        className="absolute inset-0 inline-block font-playfair font-medium text-[#2b2724]"
                         style={{ 
-                          fontSize: 'clamp(3rem, 12.5vw, 18rem)', 
+                          fontSize: 'clamp(3.5rem, 15vw, 20rem)', 
                           clipPath: 'inset(0 0 72% 0)',
                           transformOrigin: '50% 15%'
                         }}
@@ -66,8 +66,8 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                 return (
                   <motion.span
                     key={letterIndex}
-                    className="inline-block font-custom font-bold text-gray-900"
-                    style={{ fontSize: 'clamp(3rem, 12.5vw, 18rem)' }}
+                    className="inline-block font-playfair font-medium text-[#2b2724]"
+                    style={{ fontSize: 'clamp(3.5rem, 15vw, 20rem)' }}
                     variants={letterVariants}
                   >
                     {letter}
@@ -79,12 +79,12 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
         </div>
         
         <motion.p
-          className="mt-6 md:mt-4 font-serif text-gray-900 text-2xl md:text-[2rem] w-full px-4 text-center mx-auto leading-relaxed"
+          className="mt-6 md:mt-4 font-playfair text-[#3a3532] text-xl md:text-[1.8rem] w-full px-4 text-center mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.5, ease: [0.33, 1, 0.68, 1] }}
         >
-          <span className="underline decoration-1 underline-offset-[6px] decoration-gray-300">Thoughtful</span> gifts for your  <span className="underline decoration-1 underline-offset-[6px] decoration-gray-300">people &</span> moments.
+          <span className="text-[#b58953]">Thoughtful</span> gifts for your <span className="text-[#b58953]">people &</span> moments.
         </motion.p>
       </motion.div>
 

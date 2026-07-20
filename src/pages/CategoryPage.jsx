@@ -12,11 +12,11 @@ const WaIcon = () => (
 );
 
 const TAG_STYLES = {
-  Bestseller: 'bg-[#facc15] text-[#1a1a1a]',
-  Popular:    'bg-[#facc15] text-[#1a1a1a]',
-  Trending:   'bg-amber-500 text-white',
-  New:        'bg-[#1a1a2e] text-white',
-  Premium:    'bg-[#1a1a2e] text-[#facc15]',
+  Bestseller: 'bg-[#be9456] text-white',
+  Popular:    'bg-[#be9456] text-white',
+  Trending:   'bg-amber-600 text-white',
+  New:        'bg-[#2b2724] text-white',
+  Premium:    'bg-[#2b2724] text-[#be9456]',
 };
 
 const ProductCard = ({ product, onAddToCart, index }) => {
@@ -37,10 +37,10 @@ const ProductCard = ({ product, onAddToCart, index }) => {
       initial={{ opacity: 0, y: 36 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, delay: index * 0.07, ease: easing }}
-      className="group flex flex-col bg-white rounded-2xl overflow-hidden"
-      style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+      className="group flex flex-col bg-white/85 backdrop-blur-[2px] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px]"
+      style={{ boxShadow: '0 8px 30px rgba(181, 137, 83, 0.05)' }}
     >
-      <div className="relative overflow-hidden bg-[#f5f3f0]" style={{ aspectRatio: '4 / 3' }}>
+      <div className="relative overflow-hidden bg-[#faf8f5]" style={{ aspectRatio: '4 / 3' }}>
         {tag && (
           <span className={`absolute top-3 left-3 z-20 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full ${tagStyle}`}>
             {tag}
@@ -68,23 +68,23 @@ const ProductCard = ({ product, onAddToCart, index }) => {
       </div>
 
       <div className="flex flex-col flex-1 p-4 md:p-5">
-        <h3 className="font-custom font-semibold text-[#1a1a2e] text-[15px] md:text-[17px] leading-snug tracking-tight">
+        <h3 className="font-playfair text-[#2b2724] text-[15px] md:text-[17px] leading-snug tracking-tight">
           {product.name}
         </h3>
         {product.description && (
-          <p className="mt-2 text-[13px] md:text-[14px] text-gray-600 leading-relaxed font-medium">
+          <p className="mt-2 text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
             {product.description}
           </p>
         )}
 
         <div className="mt-auto pt-4 flex items-center justify-between gap-2">
-          <span className="font-custom font-bold text-[#1a1a2e] text-[18px] md:text-[20px] tracking-tight">
+          <span className="font-playfair font-semibold text-[#2b2724] text-[18px] md:text-[20px] tracking-tight">
             {product.price}
           </span>
           <button
             onClick={handleAdd}
             className={`flex-shrink-0 flex items-center justify-center gap-1.5 rounded-full outline-none border-none font-bold uppercase tracking-[0.05em] md:tracking-widest transition-colors duration-250 px-3 py-2 md:px-4 md:py-2.5 text-[9px] md:text-[11px] ${
-              added ? 'bg-[#facc15] text-[#1a1a1a]' : 'bg-[#1a1a2e] text-white'
+              added ? 'bg-[#be9456]/20 text-[#be9456]' : 'bg-[#be9456] text-white hover:bg-[#a57f49]'
             }`}
           >
             <AnimatePresence mode="wait">
@@ -167,12 +167,12 @@ const CategoryPage = () => {
   if (!data) {
     return (
       <motion.div
-        className="absolute inset-0 flex items-center justify-center bg-[#fbfaf8]"
+        className="absolute inset-0 flex items-center justify-center bg-transparent"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
       >
         <div className="text-center">
-          <p className="font-custom text-2xl text-gray-400 mb-6">Category not found</p>
-          <button onClick={() => navigate(-1)} className="bg-[#1a1a2e] text-white px-8 py-3 rounded-full text-sm font-medium">← Go Back</button>
+          <p className="font-playfair text-2xl text-[#7a7267] mb-6">Category not found</p>
+          <button onClick={() => navigate(-1)} className="bg-[#be9456] text-white px-8 py-3 rounded-full text-sm font-medium shadow-md hover:bg-[#a57f49]">← Go Back</button>
         </div>
       </motion.div>
     );
@@ -180,7 +180,7 @@ const CategoryPage = () => {
 
   return (
     <motion.div
-      className="absolute inset-0 w-full h-full overflow-y-auto overflow-x-hidden bg-[#fbfaf8] no-scrollbar"
+      className="absolute inset-0 w-full h-full overflow-y-auto overflow-x-hidden bg-transparent no-scrollbar"
       ref={scrollRef}
       onScroll={handleScroll}
       initial={{ opacity: 0 }}
@@ -193,13 +193,13 @@ const CategoryPage = () => {
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: easing }}
-        className="w-full flex flex-col items-center text-center pb-4 md:pb-6 px-6 sticky top-[-30px] md:top-[-92px] pt-[146px] md:pt-[112px] z-30 bg-[#fbfaf8] shadow-sm"
+        className="relative w-full flex flex-col items-center text-center pb-4 md:pb-6 px-6 pt-[146px] md:pt-[112px] z-30"
       >
         <motion.h1
           initial={{ opacity: 0, scale: 1.08, filter: 'blur(6px)' }}
           animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
           transition={{ duration: 0.7, delay: 0.1, ease: easing }}
-          className="font-custom text-[2.6rem] md:text-[3.4rem] font-semibold text-[#1a1a2e] tracking-tight leading-[1.1] mb-2"
+          className="font-playfair text-[2.6rem] md:text-[3.4rem] font-medium text-[#2b2724] tracking-tight leading-[1.1] mb-2"
         >
           {data.title}
         </motion.h1>
@@ -208,7 +208,7 @@ const CategoryPage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-gray-400 text-sm md:text-[15px] font-medium max-w-sm leading-relaxed"
+          className="text-[#7a7267] text-sm md:text-[15px] font-medium max-w-sm leading-relaxed"
         >
           {data.subtitle}
         </motion.p>
@@ -217,7 +217,7 @@ const CategoryPage = () => {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, delay: 0.35, ease: easing }}
-          className="mt-5 h-[3px] w-16 rounded-full bg-[#facc15] origin-left"
+          className="mt-5 h-[3px] w-16 rounded-full bg-[#be9456] origin-left"
         />
       </motion.div>
 
