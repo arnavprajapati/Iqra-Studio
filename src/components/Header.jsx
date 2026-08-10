@@ -51,7 +51,7 @@ const Header = () => {
             layout
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={`flex items-center overflow-hidden rounded-full p-1.5 transition-colors duration-300 ${isYellow ? 'bg-[#be9456] shadow-sm border border-transparent' : 'bg-white/60 backdrop-blur-md shadow-sm border border-white/40'}`}
+            className={`hidden md:flex items-center overflow-hidden rounded-full p-1.5 transition-colors duration-300 ${isYellow ? 'bg-[#be9456] shadow-sm border border-transparent' : 'bg-white/60 backdrop-blur-md shadow-sm border border-white/40'}`}
           >
             <Link
               to="/shop"
@@ -87,7 +87,7 @@ const Header = () => {
 
       <div className="flex-1 flex justify-center pointer-events-auto">
         <div className={`transition-all duration-500 transform ${scrollStage > 0 ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 pointer-events-auto'}`}>
-          <Link to="/home" className="font-style-script text-4xl sm:text-5xl md:text-6xl text-gray-900 tracking-tight whitespace-nowrap">
+          <Link to="/" className="font-style-script text-4xl sm:text-5xl md:text-6xl text-gray-900 tracking-tight whitespace-nowrap">
             Lunar pearl
           </Link>
         </div>
@@ -95,7 +95,7 @@ const Header = () => {
 
       <div className="flex-1 flex justify-end pointer-events-auto">
         {showFullNav && (
-          <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-4">
             <motion.div
               layout
               onMouseEnter={() => setIsSearchHovered(true)}

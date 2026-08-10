@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const HeroContent = ({ onExploreClick }) => {
+const HeroContent = ({ onExploreClick, onSandboxClick }) => {
   return (
     <motion.div 
-      className="relative z-10 flex flex-col items-center text-center w-full px-4 mt-2 sm:mt-4 md:mt-[60px]"
+      className="relative z-10 flex flex-col items-center text-center w-full px-4 mt-2 sm:mt-4 md:mt-[-40px]"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -54,7 +54,17 @@ const HeroContent = ({ onExploreClick }) => {
         </svg>
       </motion.button>
 
-      <div className="relative z-20 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-4 mt-[28px] md:mt-[50px] text-[#3a3532] text-[10px] font-bold uppercase tracking-[0.15em] max-w-[760px] mx-auto md:divide-x divide-[#b58953]/40 w-full px-2">
+      <button
+        onClick={onSandboxClick}
+        className="mt-2.5 text-[#be9456] text-[11px] md:text-[12px] font-bold tracking-[0.15em] uppercase hover:underline cursor-pointer pointer-events-auto flex items-center justify-center gap-1.5"
+      >
+        Or customize live in our sandbox
+        <svg className="w-3.5 h-3.5 animate-bounce mt-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+        </svg>
+      </button>
+
+      <div className="relative z-20 grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-6 md:gap-x-4 mt-[22px] md:mt-[38px] text-[#3a3532] text-[10px] font-bold uppercase tracking-[0.15em] max-w-[760px] mx-auto md:divide-x divide-[#b58953]/40 w-full px-2">
         
         <div className="flex flex-col items-center text-center gap-3 md:gap-4 md:px-6">
           <svg className="w-7 h-7 md:w-8 md:h-8 text-[#b58953]" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">

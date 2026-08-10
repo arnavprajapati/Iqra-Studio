@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Header from './Header';
+import MobileBottomNav from './MobileBottomNav';
 
 import bgImage from '../assets/images/Serene beige fabric with delicate florals.png';
 
@@ -21,6 +22,7 @@ const Layout = () => {
           <Outlet key={location.pathname} />
         </AnimatePresence>
       </div>
+      <MobileBottomNav />
     </div>
   );
 };
