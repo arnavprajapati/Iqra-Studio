@@ -26,8 +26,8 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
       }
     },
     shiftUp: {
-      y: isMobile ? "-25vh" : "-16vh",
-      scale: isMobile ? 0.88 : 0.65,
+      y: isMobile ? "-28vh" : "-16vh",
+      scale: isMobile ? 0.85 : 0.65,
       transition: {
         duration: 1.5,
         ease: slowEasing,
@@ -65,7 +65,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                     <div key={letterIndex} className="relative inline-block">
                       <motion.span
                         className="inline-block font-playfair font-medium text-[#2b2724]"
-                        style={{ fontSize: 'clamp(2.8rem, 13vw, 20rem)', clipPath: 'inset(38% 0 0 0)' }}
+                        style={{ fontSize: 'clamp(2.4rem, 11vw, 20rem)', clipPath: 'inset(38% 0 0 0)' }}
                         variants={letterVariants}
                       >
                         {letter}
@@ -74,7 +74,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                       <motion.span
                         className="absolute inset-0 inline-block font-playfair font-medium text-[#2b2724]"
                         style={{ 
-                          fontSize: 'clamp(2.8rem, 13vw, 20rem)', 
+                          fontSize: 'clamp(2.4rem, 11vw, 20rem)', 
                           clipPath: 'inset(0 0 72% 0)',
                           transformOrigin: '50% 15%'
                         }}
@@ -90,7 +90,7 @@ const TransitionOverlay = ({ text = "Crafted Gifts", onComplete }) => {
                   <motion.span
                     key={letterIndex}
                     className="inline-block font-playfair font-medium text-[#2b2724]"
-                    style={{ fontSize: 'clamp(2.8rem, 13vw, 20rem)' }}
+                    style={{ fontSize: 'clamp(2.4rem, 11vw, 20rem)' }}
                     variants={letterVariants}
                   >
                     {letter}

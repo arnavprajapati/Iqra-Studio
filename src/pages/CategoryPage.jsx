@@ -237,24 +237,6 @@ const CategoryPage = () => {
           <EmptyState title={data.title} whatsapp={data.whatsappNumber || '919876543210'} />
         )}
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9, duration: 0.4, ease: easing }}
-        className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 md:hidden"
-      >
-        <motion.a
-          href={`https://wa.me/${data.whatsappNumber || '919876543210'}?text=${encodeURIComponent(`Hi! I'm looking for gifts — ${data.title}`)}`}
-          target="_blank" rel="noreferrer"
-          className="inline-flex items-center gap-2 bg-[#25D366] text-white text-[13px] font-semibold px-6 py-3 rounded-full shadow-xl"
-          whileHover={{ scale: 1.04, transition: { duration: 0.15 } }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <WaIcon /> Chat on WhatsApp
-        </motion.a>
-      </motion.div>
-
     </motion.div>
   );
 };
