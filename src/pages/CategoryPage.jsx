@@ -34,27 +34,26 @@ const ProductCard = ({ product, onAddToCart, index }) => {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.55, delay: index * 0.07, ease: easing }}
-      className="group flex flex-col bg-white/85 backdrop-blur-[2px] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px]"
-      style={{ boxShadow: '0 8px 30px rgba(181, 137, 83, 0.05)' }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: easing }}
+      className="group flex flex-col bg-white/90 backdrop-blur-[2px] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px] border border-[#be9456]/15 shadow-[0_4px_20px_rgba(181,137,83,0.06)]"
     >
-      <div className="relative overflow-hidden bg-[#faf8f5]" style={{ aspectRatio: '4 / 3' }}>
+      <div className="relative overflow-hidden bg-[#faf8f5] aspect-square w-full">
         {tag && (
-          <span className={`absolute top-3 left-3 z-20 text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full ${tagStyle}`}>
+          <span className={`absolute top-2.5 left-2.5 z-20 text-[9px] font-bold tracking-widest uppercase px-2.5 py-0.5 rounded-full ${tagStyle}`}>
             {tag}
           </span>
         )}
         
         {/* Shimmer Placeholder */}
         {!imgLoaded && !imgErr && (
-          <div className="absolute inset-0 bg-gray-200 animate-pulse z-10" />
+          <div className="absolute inset-0 bg-[#fbf9f6] animate-pulse z-10" />
         )}
 
         {imgErr ? (
           <div className="w-full h-full flex items-center justify-center relative z-0">
-            <span className="text-5xl opacity-30">🎁</span>
+            <span className="text-4xl opacity-30">🎁</span>
           </div>
         ) : (
           <img
@@ -67,23 +66,23 @@ const ProductCard = ({ product, onAddToCart, index }) => {
         )}
       </div>
 
-      <div className="flex flex-col flex-1 p-4 md:p-5">
-        <h3 className="font-playfair text-[#2b2724] text-[15px] md:text-[17px] leading-snug tracking-tight">
+      <div className="flex flex-col flex-1 p-3 sm:p-4 md:p-5">
+        <h3 className="font-playfair text-[#2b2724] text-[14px] sm:text-[15px] md:text-[17px] font-semibold leading-snug tracking-tight line-clamp-1">
           {product.name}
         </h3>
         {product.description && (
-          <p className="mt-2 text-[13px] md:text-[14px] text-gray-500 leading-relaxed font-medium">
+          <p className="mt-1 md:mt-2 text-[11px] sm:text-[12px] md:text-[13px] text-gray-500 leading-relaxed font-medium line-clamp-2">
             {product.description}
           </p>
         )}
 
-        <div className="mt-auto pt-4 flex items-center justify-between gap-2">
-          <span className="font-playfair font-semibold text-[#2b2724] text-[18px] md:text-[20px] tracking-tight">
+        <div className="mt-auto pt-3 md:pt-4 flex items-center justify-between gap-1.5 md:gap-2">
+          <span className="font-playfair font-bold text-[#2b2724] text-[15px] sm:text-[18px] md:text-[20px] tracking-tight">
             {product.price}
           </span>
           <button
             onClick={handleAdd}
-            className={`flex-shrink-0 flex items-center justify-center gap-1.5 rounded-full outline-none border-none font-bold uppercase tracking-[0.05em] md:tracking-widest transition-colors duration-250 px-3 py-2 md:px-4 md:py-2.5 text-[9px] md:text-[11px] ${
+            className={`flex-shrink-0 flex items-center justify-center gap-1 rounded-full outline-none border-none font-bold uppercase tracking-wider transition-colors duration-250 px-2.5 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-2.5 text-[9px] sm:text-[10px] md:text-[11px] shadow-sm ${
               added ? 'bg-[#be9456]/20 text-[#be9456]' : 'bg-[#be9456] text-white hover:bg-[#a57f49]'
             }`}
           >
@@ -221,9 +220,9 @@ const CategoryPage = () => {
         />
       </motion.div>
 
-      <div className="w-full max-w-5xl mx-auto px-4 md:px-8 pb-28 pt-8">
+      <div className="w-full max-w-5xl mx-auto px-3 sm:px-6 md:px-8 pb-36 pt-4 md:pt-8">
         {data.products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
             {data.products.map((product, i) => (
               <ProductCard
                 key={product.id}

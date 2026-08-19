@@ -7,7 +7,7 @@ import CategoryCards from './CategoryCards';
 const ShopExperience = () => {
   return (
     <motion.div
-      className="relative z-40 w-full flex flex-col items-center pt-[160px] sm:pt-[190px] md:pt-[270px] lg:pt-[290px]"
+      className="relative z-40 w-full flex flex-col items-center pt-[270px] sm:pt-[290px] md:pt-[270px] lg:pt-[290px]"
       variants={shopContainerVariants}
       initial="hidden"
       animate="visible"
